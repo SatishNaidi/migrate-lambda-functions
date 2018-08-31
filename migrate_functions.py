@@ -16,7 +16,7 @@ destination_profile="default"
 
 #role = <arn for role>
 role ="arn:aws:iam::<account-number>:<rolename>"
-#Make sure the bucket pre-exist in destination account
+#Make sure the bucket pre-exist in destination account in the same region as lambda functions
 bucket_name = "<bucketname>"
 region = 'us-east-1'
 list_of_lambda_functions = ['test_function','test_function2']
