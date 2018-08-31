@@ -42,7 +42,6 @@ for each_function in list_of_lambda_functions:
     url = response["Code"]["Location"]
     r = requests.get(url, allow_redirects=True)
     open(function_name+'.zip', 'wb').write(r.content)
-    "test".lower()
 
     s3_client.meta.client.upload_file(function_name+'.zip', bucket_name, str(function_name)+'.zip'.lower())
 
