@@ -116,13 +116,16 @@ for each_region in regions:
     print "-----------------Bucket in {} region is {}----------------------".format(each_region, region_level_bucket_name)
     try:
         # s3_region_client.create_bucket(Bucket=region_level_bucket_name)
-        s3_region_client.create_bucket(
-            Bucket=region_level_bucket_name,
-            CreateBucketConfiguration=
-            {
-            'LocationConstraint': each_region
-            }
-        )
+        if each_region == "us-east-1":
+            s3_standard.create_bucket(Bucket=region_level_bucket_name)
+        else:
+            s3_region_client.create_bucket(
+                Bucket=region_level_bucket_name,
+                CreateBucketConfiguration=
+                {
+                'LocationConstraint': each_region
+                }
+            )
         print "-----------------Created Region Bucket : {} ----------------------".format(region_level_bucket_name)
     except Exception as err:
         print err
